@@ -1,0 +1,43 @@
+CREATE DATABASE IF NOT EXISTS relacionada;
+
+USE relacionada;
+
+CREATE TABLE `relacionada`.`alumnos` (
+  `id_alumno` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(30) NOT NULL,
+  `correo` VARCHAR(30) NOT NULL,
+  `curso_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id_alumno`),
+  INDEX (`curso_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro0', 'ale.zapata@gcurso_id.com', '1');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro1', 'ale.zapata1@bue.edu.ar', '3');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro2', 'ale.zapata2@gcurso_id.com', '2');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro3', 'ale.zapata3@gcurso_id.com', '1');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro4', 'ale.zapata4@gcurso_id.com', '5');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro5', 'ale.zapata5@gcurso_id.com', '3');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro6', 'ale.zapata6@gcurso_id.com', '2');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro7', 'ale.zapata7@gcurso_id.com', '4');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro8', 'ale.zapata8@gcurso_id.com', '1');
+INSERT INTO `relacionada`.`alumnos` (`nombre`, `correo`, `curso_id`) VALUES ('Alejandro9', 'ale.zapata9@gcurso_id.com', '4');
+
+
+CREATE TABLE `relacionada`.`cursos` (
+  `id_curso` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(30) NOT NULL,
+  `costo` INT(11) NOT NULL,
+  PRIMARY KEY (`id_curso`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+INSERT INTO `relacionada`.`cursos` (`nombre`, `costo`) VALUES ('PHP', 'U$S100');
+INSERT INTO `relacionada`.`cursos` (`nombre`, `costo`) VALUES ('Java', 'U$S300');
+INSERT INTO `relacionada`.`cursos` (`nombre`, `costo`) VALUES ('Python', 'U$S200');
+INSERT INTO `relacionada`.`cursos` (`nombre`, `costo`) VALUES ('Ruby', 'U$S100');
+INSERT INTO `relacionada`.`cursos` (`nombre`, `costo`) VALUES ('Javascript', 'U$S500');
+
+ALTER TABLE `alumnos` ADD FOREIGN KEY (`curso_id`) REFERENCES `cursos`(`id_curso`) ON DELETE RESTRICT ON UPDATE RESTRICT;
